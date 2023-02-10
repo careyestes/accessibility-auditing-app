@@ -1,0 +1,427 @@
+@import '../../styles/variables/light-variables.scss';
+
+.form {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  max-width: 70rem;
+  margin: 0 auto;
+  padding: 0 6rem;
+  accent-color: var(--form-accent-color);
+  label, input, textarea {
+    font-family: var(--default-font);
+    line-height: 1.6;
+    font-size: 18px;
+  }
+  label {
+    flex: 0 1 auto;
+    min-width: 4rem;
+    font-size: 0.85rem;
+    padding: 0 1rem 0 0;
+  }
+  input, textarea, .readOnly {
+    flex: 1 1 100%;
+    padding: 0.5rem 1rem;
+    background: transparent;
+    border: 0;
+    border-bottom: 1px solid var(--input-border-color);
+    border-radius: 0.2rem;
+    color: var(--foreground-color-light);
+    font-size: 1.2rem;
+    outline: 0px solid var(--link-color);
+    cursor: pointer;
+    transition: 0.2s;
+    &:hover, &:focus {
+      background: var(--background-color);
+    }
+    &:focus {
+      outline: 1px solid var(--link-color);
+      outline-offset: 3px;
+    }
+    &[type=checkbox] {
+      flex: 0 0 auto;
+      width: 1.5rem;
+      height: 1.5rem;
+    }
+    &.small {
+      font-size: 0.9rem;
+    }
+    &.siteDetails {
+      border-bottom: 1px solid var(--input-border-color);
+    }
+  }
+  input[type="checkbox"] {
+    accent-color: var(--form-accent-color);
+  }
+  select {
+    grid-area: select;
+    font-size: 1rem;
+    padding: 0.5rem 0.7rem;
+    // A reset of styles, including removing the default dropdown arrow
+    appearance: none;
+    // Additional resets for further consistency
+    background-color: transparent;
+    border: none;
+    padding: 0 1em 0 0;
+    margin: 0;
+    width: 100%;
+    color: var(--foreground-color-dark);
+    font-family: inherit;
+    font-size: inherit;
+    cursor: inherit;
+    line-height: inherit;
+    outline: none;
+  }
+  select:focus + .focus {
+    position: absolute;
+    top: -1px;
+    left: -1px;
+    right: -1px;
+    bottom: -1px;
+    border: 1px solid var(--link-color);
+    border-radius: inherit;
+  }
+  .select {
+    position: relative;
+    display: grid;
+    grid-template-areas: "select";
+    align-items: center;
+    width: 100%;
+    min-width: 15ch;
+    max-width: 30ch;
+    border: 1px solid var(--select-border);
+    border-radius: 0.25em;
+    padding: 0.25em 0.5em;
+    font-size: 1.25rem;
+    cursor: pointer;
+    line-height: 1.1;
+    background-color: var(--background-color-ultra-light);
+    &:after {
+      content: "";
+      grid-area: select;
+      justify-self: end;
+      width: 0.8em;
+      height: 0.5em;
+      background-color: var(--select-arrow);
+      clip-path: polygon(100% 0%, 0 0%, 50% 100%);
+    }
+  }
+  .readOnly {
+    border: 0;
+  }
+  input {
+    margin-right: 1rem;
+  }
+  textarea {
+    padding: 0 1rem;
+    font-size: 1rem;
+  }
+
+  .container {
+    display: block;
+    position: relative;
+    padding: 2.4rem 0 0 0;
+    margin-bottom: 0.8rem;
+    cursor: pointer;
+    user-select: none;
+    input {
+      position: absolute;
+      opacity: 0;
+      cursor: pointer;
+      height: 0;
+      width: 0;
+      &:checked ~ .checkmark {
+        background-color: var(--form-accent-color);
+      }
+      &:checked ~ .checkmark:after {
+        display: block;
+      }
+    }
+    .checkLabel {
+      display: block;
+      text-align: center;
+    }
+    .checkmark {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 2rem;
+      width: 2rem;
+      margin: 0 auto;
+      background-color: var(--background-color);
+      border: 2px solid var(--border-color);
+      border-radius: 0.4rem;
+      &:after {
+        content: "";
+        position: absolute;
+        display: none;
+      }
+      &:after {
+        left: 12px;
+        top: 5px;
+        width: 8px;
+        height: 16px;
+        border: solid var(--background-color);
+        border-width: 0 2px 2px 0;
+        -webkit-transform: rotate(35deg);
+        -ms-transform: rotate(35deg);
+        transform: rotate(35deg);
+      }
+    }
+  }
+
+  & > p {
+    display: flex;
+    align-items: center;
+    &.siteName {
+      margin-bottom: 0.2rem;
+      & > input {
+        font-size: 1.75rem;
+        font-weight: bold;
+      }
+    }
+    &.topFormSections {
+      & > label:nth-child(1) {
+        min-width: 6rem;
+        padding-right: 0;
+      }
+    }
+    &.slug {
+      display: flex;
+      margin: 0 0 0 7rem; 
+      & > label, & > input {
+        color: var(--foreground-color-light);
+        font-size: 0.85rem;
+        font-style: italic;
+      }
+      & > label:nth-child(1) {
+        min-width: auto;
+        padding-right: 0;
+      }
+      & > input {
+        border: 0;
+        outline: 0;
+        cursor: default;
+      }
+    }
+  }
+
+  div.topFormSections {
+    display: flex;
+    padding: 2rem 0 0;
+    & > .scoreContainer, .issueCountContainer {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      flex: 0 0 auto;
+      margin: 0 0 0 0;
+      padding: 0 3rem;
+      border-right: 1px solid var(--border-color);
+      label {
+        min-width: auto;
+        padding: 0;
+      }
+      .score, .issueCount {
+        flex: 0 0 auto;
+        margin: 0;
+        color: var(--foreground-color-light);
+        font-size: 2rem;
+        font-weight: 700;
+        &.neutral {
+          color: var(--foreground-color-dark);
+        }
+        &.severe {
+          color: var(--red);
+        }
+        &.moderate {
+          color: var(--orange);
+        }
+        &.good {
+          color: var(--green);
+        }
+      }
+    } 
+    .summaryContainer {
+      flex: 1 1 auto;
+      margin: 0 0 0 3rem;
+      label {
+        display: inline-block;
+        width: 6rem;
+        transform: translateY(-12px);
+      }
+      textarea {
+        width: calc(100% - 6rem);
+        margin: 0;
+        padding: 0;
+      }
+    }
+  }
+  
+  button {
+    margin: 1rem;
+    padding: 1rem 2rem;
+    background: transparent;
+    border: 1px solid var(--foreground-color-light);
+    border-radius: 1rem;
+    color: var(--foreground-color-light);
+    font-size: 0.85rem;
+    font-weight: bold;
+    letter-spacing: 0.1rem;
+    text-transform: uppercase;
+  }
+  button.inlineEdit {
+    margin: 0 0.5rem 0 0;
+    padding: 0.25rem;
+    border-radius: 0;
+    font-size: 0.5rem;
+    opacity: 0.25;
+    &:hover, &:focus {
+      opacity: 1;
+    }
+  }
+  .checkboxRow {
+    display: flex;
+    align-items: center;
+  }
+  .doneCheckbox {
+    position: absolute;
+    top: 1rem;
+    left: -5rem;
+  }
+  .removeCheckbox {
+    position: absolute;
+    top: 7rem;
+    left: -5rem;
+  }
+  .cancelButton {
+    position: relative;
+  }
+  .saveButton {
+    background: var(--layered-background-teal);
+    border-color: var(--layered-background-teal);
+    &:disabled {
+      background: var(--background-color-ultra-light);
+      border-color: var(--background-color-ultra-light);
+      color: var(--foreground-color-dark);
+    }
+  }
+  .issuesContainer {
+    position: fixed;
+    z-index: 3;
+    border-radius: 1rem;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    border-radius: 1rem;
+    transition: background 0.5s;
+    &.hidden {
+      top: 100vw;
+      left: 0;
+      background: rgba(0,0,0,0);
+    }
+    &.shown {
+      top: 0;
+      left: 0;
+      background: rgba(0,0,0,0.4);
+    }
+    .buttonContainer {
+      display: flex;
+      margin: 1rem;
+      border-radius: 1rem;
+      
+    }
+  }
+  .addIssueContainer, .existingIssues {
+    .row {
+      display: flex;
+      justify-content: space-between;
+      .rowColumn {
+        display: flex;
+        align-items: center;
+        flex: 1 1 auto;
+        margin: 1rem 0.5rem 1rem 0;
+        label {
+          min-width: 6rem;
+          padding: 0 0.5rem 0 0;
+          text-align: right;
+        }
+        select, input, .readOnly {
+          flex: 1 1 100%;
+        }
+        .readOnly:hover + button {
+          opacity: 1;
+        }
+        &.alignTop {
+          align-items: flex-start;
+        }
+      }
+    }
+  }
+  .addIssueContainer {
+    border: 1px solid grey;
+    border-radius: 1rem;
+    padding: 1rem;
+    background: var(--foreground-color-ultra-light, 45);
+    transition: margin 0.15s;
+    &.hidden {
+      margin: 0rem 6rem -20rem;
+    }
+    &.shown {
+      margin: 0rem 6rem 8rem;
+    }
+  }
+  h2 {
+    margin: 3rem 0 0;
+    color: var(--foreground-color-light);
+    border-bottom: 1px solid var(--border-color);
+    .issueCount {
+      font-size: 2.5rem;
+    }
+  }
+  .existingIssues {
+    padding: 0 0;
+  }
+  .issueList {
+    position: relative;
+    margin: 1rem 0;
+    border: 1px solid grey;
+    border-radius: 1rem;
+    padding: 1rem;
+    background: var(--background-color-ultra-light);
+    &.done {
+      background: var(--disabled-background);
+      border-color: var(--disabled-color);
+      color: var(--disabled-color);
+      input, textarea, select, .select {
+        color: var(--disabled-color);
+        border-color: var(--disabled-color);
+        accent-color: var(--disabled-color);
+      }
+      .select {
+        &:after {
+          background-color: var(--disabled-color);
+        }
+      } 
+    }
+  }
+}
+
+.fixedBottom {
+  position: fixed;
+  z-index: 4;
+  bottom: 0;
+  left: 0;
+  display: flex;
+  justify-content: center;
+  width: 100vw;
+  background: var(--background-color);
+  border-top: 2px solid var(--foreground-color-dark);
+  text-align: center;
+  button {
+    flex: 0 0 16rem;
+  }
+}
