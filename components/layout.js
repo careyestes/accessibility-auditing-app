@@ -34,7 +34,7 @@ export default function Layout({ children, location }) {
                   <polygon points="374.0632324,14.5779781 374.0632324,23.7724037 402.9520569,21.6890755 402.9520569,17.2724171 	"/>
                   <path d="M267.9523621,131.466629c40.2662964-0.0544434,78.4831238,0.4633484,105.8886414,4L342.6188354,86.1334c-7.4702759-20.898407-24.7127686-29.293396-50.2221069-27.1110535l-9.333313-0.0000114c0,0-19.5555115-23.1110649-35.1110382-23.1110649s-83.9998322-0.4444466-91.1109314,0c-7.1110992,0.4444427-10.6666412,6.2222099-10.6666412,6.2222099L267.9523621,131.466629z"/>
                 </svg>
-                <span className={styles.acronymTitle}>AAT</span> <span className={styles.title}>Accessibility Auditing Tool</span> <em>"Blowing up accessibility issues...one at a time"</em>
+                <span className={styles.acronymTitle}>AAT</span> <span className={styles.title}>Accessibility Auditing Tool</span>
               </a>
               </h1>
             </Link>
