@@ -362,10 +362,11 @@
     }
   }
   .addIssueContainer {
+    width: 50%;
     border: 1px solid grey;
     border-radius: 1rem;
     padding: 1rem;
-    background: var(--foreground-color-ultra-light, 45);
+    background: var(--background-color);
     transition: margin 0.15s;
     &.hidden {
       margin: 0rem 6rem -20rem;

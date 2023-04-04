@@ -35,8 +35,6 @@ export default function Home({ allAuditsData }) {
     return color;
   }
 
-  console.log(allAuditsData);
-
   return (
     <Layout location='home'>
       <Head>
@@ -52,9 +50,7 @@ export default function Home({ allAuditsData }) {
         </div>
 
         <ul className={styles.post_list}>
-
-          {allAuditsData.length > 0 ? (
-            allAuditsData.map(({ id, sitename, date, url, auditor, score }) => (
+            {allAuditsData.map(({ id, sitename, date, url, auditor, score }) => (
               
               sitename === "" ? "" : (
                 <li className="list-item" key={id} >
@@ -80,10 +76,7 @@ export default function Home({ allAuditsData }) {
                   </Link>
                 </li>
               )
-            ))
-          ) : (
-            <p>No audits have been created yet.</p>
-          )}
+            ))}
           </ul>
 
       </section>

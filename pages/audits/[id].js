@@ -156,18 +156,6 @@ export default function Post({ postData }) {
               </div>
               
               <div className={styles.rowColumn}>
-                <label htmlFor="mode">Mode</label>
-                <div className={styles.select}>
-                  <select id="mode" name={ "mode_" + issueCount }>
-                    <option>N/A</option>
-                    <option>Navigation</option>
-                    <option>Snapshot</option>
-                  </select>
-                  <span className={styles.focus}></span>
-                </div>
-              </div>
-
-              <div className={styles.rowColumn}>
                 <label htmlFor="severity">Severity</label>
                 <input id="severity" type="range" name={ "severity_" + issueCount } min="0" max="100" step="10" />
               </div>
@@ -259,18 +247,6 @@ export default function Post({ postData }) {
                         </select>
                         <span className={styles.focus}></span>
                       </div>
-                  </div>
-
-                  <div className={styles.rowColumn}>
-                    <label htmlFor={ "mode_" + currentIndex }>Mode</label>
-                    <div data-type="editOnly" className={styles.select}>
-                      <select id={ "mode_" + currentIndex } name={ "mode_" + currentIndex } defaultValue={ item.mode }>
-                        <option value="N/A">N/A</option>
-                        <option value="Navigation">Navigation</option>
-                        <option value="Snapshot">Snapshot</option>
-                      </select>
-                      <span className={styles.focus}></span>
-                    </div>
                   </div>
 
                   <div className={styles.rowColumn}>
